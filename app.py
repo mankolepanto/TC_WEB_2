@@ -16,7 +16,7 @@ app = Flask (__name__)
 
 
 #path_base = 'C:\\Users\\annav\\THEBRIDGE\\TC_WEB\\'
-path_base = os.path.join(os.path.dirname(__file__), 'model.pkl')
+path_base = os.path.join('src', 'model.pkl')
 
 @app.route ('/')
 @app.route ('/inicio') # Decorador
