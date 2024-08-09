@@ -14,8 +14,6 @@ import base64
 
 app = Flask (__name__)
 
-
-#path_base = 'C:\\Users\\annav\\THEBRIDGE\\TC_WEB\\'
 path_base = os.path.join('src', 'model.pkl')
 
 @app.route ('/')
@@ -44,7 +42,8 @@ def predicciones():
     if request.method == 'POST':
         try:
             # Maneja la solicitud POST para predicción
-            model = pickle.load(open(path_base + 'ad_model.pkl', 'rb'))
+            #model = pickle.load(open(path_base + 'ad_model.pkl', 'rb'))
+            model = pickle.load(open('ad_model.pkl', 'rb'))
 
             # Obtiene los valores del formulario
             wine_class = request.form.get('class', None)
