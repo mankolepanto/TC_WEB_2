@@ -9,9 +9,14 @@ import pickle
 import os
 
 
-#os.chdir(os.path.dirname(__file__))
+# Obtén el directorio actual de trabajo
+base_dir = os.getcwd()
 
-data = pd.read_csv("./data/wines_dataset.csv", sep = "|")
+# Construye la ruta relativa al archivo
+file_path = os.path.join(base_dir, "data", "wines_dataset.csv")
+
+# Lee el archivo CSV
+data = pd.read_csv(file_path, sep="|")
 
 #Particion en train-test:
 X_train, X_test, y_train, y_test = train_test_split(data.drop(columns=['quality']),
