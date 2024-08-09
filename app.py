@@ -15,8 +15,8 @@ import base64
 app = Flask (__name__)
 
 
-path_base = 'C:\\Users\\annav\\THEBRIDGE\\TC_WEB\\'
-
+#path_base = 'C:\\Users\\annav\\THEBRIDGE\\TC_WEB\\'
+path_base = 'C:\cosas\web_flas_2\TC_WEB_2'
 
 @app.route ('/')
 @app.route ('/inicio') # Decorador
