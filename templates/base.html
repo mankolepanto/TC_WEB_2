@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Página Inicial{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-line">
+            <button class="menu-button">&#9776;</button> <!-- Botón del menú -->
+            <a href="{{ url_for('inicio') }}" class="inicio-link">
+                <img src="{{ url_for('static', filename='imagenes/logo.png') }}" alt="Inicio" style="height: 50px;">
+            </a>
+        </div>
+        <div class="menu">
+            <button class="close-button">&times;</button> <!-- Botón de cierre del menú -->
+            <ul class="menu-list">
+                <li><a href="{{ url_for('data') }}">Data</a></li>
+                <li><a href="{{ url_for('modelo') }}">Modelo/Resultados</a></li>
+                <li><a href="{{ url_for('predicciones') }}">Predicciones</a></li>
+                <li><a href="{{ url_for('retrain') }}">Retrain</a></li>
+            </ul>
+        </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script> <!-- Incluye el archivo JavaScript -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var menuButton = document.querySelector('.menu-button');
+    var menu = document.querySelector('.menu');
+    var closeButton = document.querySelector('.close-button');
+
+    menuButton.addEventListener('click', function() {
+        menu.classList.toggle('active');
+    });
+
+    closeButton.addEventListener('click', function() {
+        menu.classList.remove('active');
+    });
+});
+    </script>
+</body>
+</html>

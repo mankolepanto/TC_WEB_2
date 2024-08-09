@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <section class="content-section">
+        <h1>Bienvenido a la Página de DATA</h1>
+        <p>Aquí encontrarás información sobre el dataset utilizado para nuestro proyecto de Machine Learning:</p>
+        <ul>
+            <li><strong>Features:</strong> Explicación de las features utilizadas en el modelo:</li>
+            <li><strong>Class:</strong> Si es blanco o tinto.</li>
+            <li><strong>Acidez volátil:</strong> La cantidad de ácido acético en el vino, que en niveles demasiado altos puede llevar a un sabor desagradable a vinagre.</li>
+            <li><strong>Ácido cítrico:</strong> Encontrado en pequeñas cantidades, el ácido cítrico puede añadir 'frescura' y sabor a los vinos.</li>
+            <li><strong>Cloruros:</strong> La cantidad de sal en el vino.</li>
+            <li><strong>Dióxido de azufre libre:</strong> La porción libre de SO2 existe en equilibrio entre el SO2 molecular (como un gas disuelto) y el ion bisulfito; previene el crecimiento microbiano y la oxidación del vino.</li>
+            <li><strong>Dióxido de azufre total:</strong> Es la cantidad de formas libres y ligadas de S02; en bajas concentraciones, el SO2 es en su mayoría indetectable en el vino, pero en concentraciones libres de más de 50 ppm, el SO2 se hace evidente en la nariz y el sabor del vino.</li>
+            <li><strong>Densidad:</strong> La densidad del vino es cercana a la del agua dependiendo del porcentaje de alcohol y contenido de azúcar.</li>
+            <li><strong>pH:</strong> Describe qué tan ácido o básico es un vino en una escala de 0 (muy ácido) a 14 (muy básico); la mayoría de los vinos están entre 3-4 en la escala de pH.</li>
+            <li><strong>Sulfatos:</strong> Un aditivo del vino que puede contribuir a los niveles de dióxido de azufre (SO2), que actúa como un antimicrobiano y antioxidante.</li>
+            <li><strong>Alcohol:</strong> El porcentaje de contenido de alcohol del vino.</li>
+        </ul>
+        <p>Nuestro target es la calidad, feature categórica. Una variable de salida (basada en datos sensoriales, puntuación entre 3 y 9).</p>
+
+        <!-- Añadimos la tabla con la muestra de datos -->
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>class</th>
+                    <th>volatile acidity</th>
+                    <th>citric acid</th>
+                    <th>chlorides</th>
+                    <th>free sulfur dioxide</th>
+                    <th>total sulfur dioxide</th>
+                    <th>density</th>
+                    <th>pH</th>
+                    <th>sulphates</th>
+                    <th>alcohol</th>
+                    <th>quality</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in sample_data %}
+                <tr>
+                    <td>{{ row['class'] }}</td>
+                    <td>{{ row['volatile acidity'] }}</td>
+                    <td>{{ row['citric acid'] }}</td>
+                    <td>{{ row['chlorides'] }}</td>
+                    <td>{{ row['free sulfur dioxide'] }}</td>
+                    <td>{{ row['total sulfur dioxide'] }}</td>
+                    <td>{{ row['density'] }}</td>
+                    <td>{{ row['pH'] }}</td>
+                    <td>{{ row['sulphates'] }}</td>
+                    <td>{{ row['alcohol'] }}</td>
+                    <td>{{ row['quality'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var menuButton = document.querySelector('.menu-button');
+    var menu = document.querySelector('.menu');
+    var closeButton = document.querySelector('.close-button');
+
+    menuButton.addEventListener('click', function() {
+        menu.classList.toggle('active');
+    });
+
+    closeButton.addEventListener('click', function() {
+        menu.classList.remove('active');
+    });
+});
+    </script>
+{% endblock %}

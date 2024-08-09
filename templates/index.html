@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="banner"></div>
+
+<div class="content">
+    <!-- Recuadro semitransparente -->
+    <div class="content">
+        <div class="overlay-box">
+            <h2>The Good Wine</h2>
+            <p>En The Good Wine, nuestra misión es simplificar la experiencia de seleccionar el vino perfecto en un mercado tan vasto y diverso. Sabemos que elegir un vino adecuado puede ser una tarea desafiante debido a la inmensa variedad de opciones disponibles. Por eso, hemos creado una herramienta única que combina la experiencia enológica con la tecnología avanzada para ofrecerte recomendaciones personalizadas.</p>
+    
+            <p>¿Cómo lo hacemos? Utilizamos un modelo de regresión sofisticado que evalúa y puntúa vinos, tanto tintos como blancos, basándose en una serie de métricas clave. Nuestro modelo analiza factores como el contenido de alcohol, la acidez volátil, los sulfatos, el pH y otras variables críticas para proporcionar una puntuación precisa para cada vino.</p>
+    
+            <p>Esta puntuación no solo refleja la calidad del vino, sino que también te ayuda a encontrar el vino que mejor se adapte a tus preferencias y necesidades. Ya sea que estés buscando un vino para una ocasión especial o simplemente para disfrutar en casa, The Good Wine te ofrece una guía confiable y basada en datos para que cada selección sea una experiencia excepcional.</p>
+    
+            <p>Explora nuestro catálogo y deja que nuestra tecnología te guíe hacia los mejores vinos. ¡Descubre la diferencia que una recomendación bien fundamentada puede hacer en tu próxima compra!</p>
+        </div>
+    </div>
+</div>
+
+<div class="menu">
+    <span class="close-button">&times;</span>
+    <a href="{{ url_for('data') }}">Data</a>
+    <a href="{{ url_for('modelo') }}">Modelo/Resultados</a>
+    <a href="{{ url_for('predicciones') }}">Predicciones</a>
+    <a href="{{ url_for('retrain') }}">Retrain</a>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var menuButton = document.querySelector('.menu-button');
+        var menu = document.querySelector('.menu');
+        var closeButton = document.querySelector('.close-button');
+
+        menuButton.addEventListener('click', function() {
+            menu.classList.toggle('active');
+        });
+
+        closeButton.addEventListener('click', function() {
+            menu.classList.remove('active');
+        });
+    });
+</script>
+{% endblock %}
+
+
+

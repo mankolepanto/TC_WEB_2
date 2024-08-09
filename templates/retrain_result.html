@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <ul id="barra">
+        <li><a href="{{ url_for('data') }}">Data</a></li>
+        <li><a href="{{ url_for('predicciones') }}">Predicciones</a></li>
+        <li><a href="{{ url_for('retrain') }}">Retrain</a></li>
+    </ul>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resultado del Retrain</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }
+            th {
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Resultado del Retrain del Modelo</h1>
+        {% if error %}
+            <p>{{ error }}</p>
+        {% else %}
+            <h2>Classification Report:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Clase</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                        <th>F1-Score</th>
+                        <th>Soporte</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for class, metrics in class_report.items() %}
+                        {% if class not in ['accuracy', 'macro avg', 'weighted avg'] %}
+                            <tr>
+                                <td>{{ class }}</td>
+                                <td>{{ metrics.precision }}</td>
+                                <td>{{ metrics.recall }}</td>
+                                <td>{{ metrics['f1-score'] }}</td>
+                                <td>{{ metrics.support }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    <tr>
+                        <td>Accuracy</td>
+                        <td colspan="4">{{ class_report.accuracy }}</td>
+                    </tr>
+                    <tr>
+                        <td>Macro Avg</td>
+                        <td>{{ class_report['macro avg'].precision }}</td>
+                        <td>{{ class_report['macro avg'].recall }}</td>
+                        <td>{{ class_report['macro avg']['f1-score'] }}</td>
+                        <td>{{ class_report['macro avg'].support }}</td>
+                    </tr>
+                    <tr>
+                        <td>Weighted Avg</td>
+                        <td>{{ class_report['weighted avg'].precision }}</td>
+                        <td>{{ class_report['weighted avg'].recall }}</td>
+                        <td>{{ class_report['weighted avg']['f1-score'] }}</td>
+                        <td>{{ class_report['weighted avg'].support }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Matriz de Confusión:</h2>
+            <img src="data:image/png;base64,{{ img_data }}" alt="Matriz de Confusión">
+        {% endif %}
+        <a href="/retrain">Volver a Retrain</a>
+    </body>
+{% endblock %}

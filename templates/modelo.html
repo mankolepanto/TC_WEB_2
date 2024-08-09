@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>Bienvenido a la Página del Modelo y de los resultados</h1>
+        <p>Aqui encontrarás la información del modelo de machine learning seleccionado y los resultados del mismo:</p>
+        <ul>
+            <li><strong>Modelo:</strong> Hemos escogido el siguiente modelo: .</li>
+            <li><strong>Resultados:</strong> Revisa los resultados obtenidos y cómo se presentan.</li>
+        </ul>
+        <p>Cada enlace en la barra de navegación te llevará a una sección específica donde podrás obtener más detalles sobre cada aspecto del proyecto.</p>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var menuButton = document.querySelector('.menu-button');
+    var menu = document.querySelector('.menu');
+    var closeButton = document.querySelector('.close-button');
+
+    menuButton.addEventListener('click', function() {
+        menu.classList.toggle('active');
+    });
+
+    closeButton.addEventListener('click', function() {
+        menu.classList.remove('active');
+    });
+});
+    </script>
+{% endblock %}
