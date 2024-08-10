@@ -107,7 +107,7 @@ def retrain():
                 data.drop(columns=['quality']),
                 data['quality'],
                 test_size=0.20,
-                random_state=42
+                random_state=52
             )
 
             # Aplicar las mismas transformaciones
